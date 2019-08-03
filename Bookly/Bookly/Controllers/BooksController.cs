@@ -1,4 +1,5 @@
 ﻿using Bookly.Models;
+using Bookly.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +13,22 @@ namespace Bookly.Controllers
         // GET: Books
         public ActionResult Index()
         {
-            return View();
+            var books = GetBooks();
+
+            return View(books);
         }
 
-        //GET: Books/Random
-        public ActionResult Random()
+
+        private IEnumerable<Book> GetBooks()
         {
-            var movie = new Book() { Name = "Frankenstein" };
-
-            return View(movie);
+            return new List<Book>
+            {
+                new Book {Name = "Quack Quack Moo", Id = 1},
+                new Book {Name = "Quack Quack Peep", Id = 2},
+                new Book {Name = "Quack Quack Duck", Id = 3}
+            };
         }
+
+     
     }
 }
