@@ -213,9 +213,26 @@
     <Compile Include="Migrations\201908040157511_SetCustomerBirthday.Designer.cs">
       <DependentUpon>201908040157511_SetCustomerBirthday.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908041909536_UpdateBokModel.cs" />
+    <Compile Include="Migrations\201908041909536_UpdateBokModel.Designer.cs">
+      <DependentUpon>201908041909536_UpdateBokModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908041943489_UpdateBookClass.cs" />
+    <Compile Include="Migrations\201908041943489_UpdateBookClass.Designer.cs">
+      <DependentUpon>201908041943489_UpdateBookClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908041959166_Restart.cs" />
+    <Compile Include="Migrations\201908041959166_Restart.Designer.cs">
+      <DependentUpon>201908041959166_Restart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908042007467_AddGenre.cs" />
+    <Compile Include="Migrations\201908042007467_AddGenre.Designer.cs">
+      <DependentUpon>201908042007467_AddGenre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Book.cs" />
@@ -365,6 +382,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908040157511_SetCustomerBirthday.resx">
       <DependentUpon>201908040157511_SetCustomerBirthday.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908041909536_UpdateBokModel.resx">
+      <DependentUpon>201908041909536_UpdateBokModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908041943489_UpdateBookClass.resx">
+      <DependentUpon>201908041943489_UpdateBookClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908041959166_Restart.resx">
+      <DependentUpon>201908041959166_Restart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908042007467_AddGenre.resx">
+      <DependentUpon>201908042007467_AddGenre.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
