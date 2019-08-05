@@ -1,4 +1,5 @@
 ﻿using Bookly.Models;
+using System.Data.Entity;
 using Bookly.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,25 +11,89 @@ namespace Bookly.Controllers
 {
     public class BooksController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public BooksController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
         // GET: Books
         public ActionResult Index()
         {
-            var books = GetBooks();
+
+            var books = _context.Books.Include(b => b.Genre).ToList();
 
             return View(books);
         }
 
-
-        private IEnumerable<Book> GetBooks()
+        //GET: Books/Details/Id
+        public ActionResult Details(int id)
         {
-            return new List<Book>
-            {
-                new Book {Name = "Quack Quack Moo", Id = 1},
-                new Book {Name = "Quack Quack Peep", Id = 2},
-                new Book {Name = "Quack Quack Duck", Id = 3}
-            };
+            var book = _context.Books.Include(b => b.Genre).SingleOrDefault(b => b.Id == id);
+
+            if (book == null)
+                return HttpNotFound();
+
+            return View(book);
         }
 
-     
+        //GET: Books/New
+        public ActionResult New()
+        {
+            var genres = _context.Genres.ToList();
+            var viewModel = new BookFormViewModel()
+            {
+                Genres = genres
+
+            };
+
+            return View("BookForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Book book)
+        {
+            if (book.Id == 0)
+                _context.Books.Add(book);
+            else
+            {
+                var bookInDb = _context.Books.Single(c => c.Id == book.Id);
+
+                bookInDb.Author = book.Author;
+                bookInDb.DateAdded = System.DateTime.Now;
+                bookInDb.Name = book.Name;
+                bookInDb.GenreId = book.GenreId;
+                bookInDb.ReleaseDate = book.ReleaseDate;
+                bookInDb.NumInStock = book.NumInStock;
+
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Book");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var book = _context.Books.SingleOrDefault(c => c.Id == id);
+
+            if (book == null)
+                return HttpNotFound();
+
+            var viewModel = new BookFormViewModel()
+            {
+                Book = book,
+                Genres = _context.Genres.ToList()
+            };
+
+            return View("BookForm", viewModel);
+        }
+
     }
 }
