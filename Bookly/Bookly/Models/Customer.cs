@@ -15,6 +15,7 @@ namespace Bookly.Models
         public string Name { get; set; }
 
         [Display(Name = "Date of Birth")]
+        [AgeMembershipRequirement]
         public DateTime? Birthday { get; set; }
 
         public bool IsSubscribedToNewsletter { get; set; }

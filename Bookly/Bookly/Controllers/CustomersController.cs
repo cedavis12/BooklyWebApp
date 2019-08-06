@@ -33,6 +33,7 @@ namespace Bookly.Controllers
         }
 
 
+        //GET: Customer/Details/Id
         public ActionResult Details(int id)
         {
             var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
@@ -43,11 +44,13 @@ namespace Bookly.Controllers
             return View(customer);
         }
 
+        //GET: Customers/New
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
             var viewModel = new CustomerFormViewModel()
             {
+                Customer = new Customer(),
                 membershipTypes = membershipTypes
             };
 
@@ -55,9 +58,22 @@ namespace Bookly.Controllers
             return View("CustomerForm", viewModel);
         }
 
+        //POST: Customers/Save
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel()
+                {
+                    Customer = customer,
+                    membershipTypes = _context.MembershipTypes.ToList()
+                };
+
+                return View("CustomerForm", viewModel);
+            }
+
             if(customer.Id == 0)
                 _context.Customers.Add(customer);
             else
@@ -75,6 +91,7 @@ namespace Bookly.Controllers
             return RedirectToAction("Index", "Customers");
         }
 
+        //GET: Customers/Edit/Id
         public ActionResult Edit(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);

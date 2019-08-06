@@ -50,15 +50,26 @@ namespace Bookly.Controllers
             var viewModel = new BookFormViewModel()
             {
                 Genres = genres
-
             };
 
             return View("BookForm", viewModel);
         }
 
+        //POST: Books/Save
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Book book)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new BookFormViewModel(book)
+                {
+                    Genres = _context.Genres.ToList()
+                };
+
+                return View("BookForm", viewModel);
+            }
+
             if (book.Id == 0)
             {
                 book.DateAdded = DateTime.Now;
@@ -81,6 +92,7 @@ namespace Bookly.Controllers
             return RedirectToAction("Index", "Books");
         }
 
+        //GET: Books/Edit/Id
         public ActionResult Edit(int id)
         {
             var book = _context.Books.SingleOrDefault(b => b.Id == id);
@@ -88,9 +100,9 @@ namespace Bookly.Controllers
             if (book == null)
                 return HttpNotFound();
 
-            var viewModel = new BookFormViewModel()
+            var viewModel = new BookFormViewModel(book)
             {
-                Book = book,
+               
                 Genres = _context.Genres.ToList()
             };
 
