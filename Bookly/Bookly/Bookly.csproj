@@ -237,6 +237,10 @@
     <Compile Include="Migrations\201908042017236_AddGenreNames.Designer.cs">
       <DependentUpon>201908042017236_AddGenreNames.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908060216146_MakeGenreNullable.cs" />
+    <Compile Include="Migrations\201908060216146_MakeGenreNullable.Designer.cs">
+      <DependentUpon>201908060216146_MakeGenreNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -412,6 +416,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908042017236_AddGenreNames.resx">
       <DependentUpon>201908042017236_AddGenreNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908060216146_MakeGenreNullable.resx">
+      <DependentUpon>201908060216146_MakeGenreNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
