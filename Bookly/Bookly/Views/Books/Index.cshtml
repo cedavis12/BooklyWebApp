@@ -28,14 +28,14 @@
         $(document).ready(function () {
             var table = $("#books").DataTable({
                     ajax: {
-                    url: "api/books",
+                    url: "/api/books",
                     dataSrc: ""
                 },
                 columns: [
                     {
                         data: "name",
                         render: function (data, type, book) {
-                            return "<a href='/books/edit/" + book.Id + "'>" + book.name + "</a>";
+                            return "<a href='/books/edit/" + book.id + "'>" + book.name + "</a>";
                         }
                     },
                     {
