@@ -26,10 +26,7 @@ namespace Bookly.Controllers
         // GET: Books
         public ActionResult Index()
         {
-
-            var books = _context.Books.Include(b => b.Genre).ToList();
-
-            return View(books);
+            return View();
         }
 
         //GET: Books/Details/Id

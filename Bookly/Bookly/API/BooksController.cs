@@ -7,6 +7,7 @@ using System.Web.Http;
 using Bookly.Dtos;
 using Bookly.Models;
 using AutoMapper;
+using System.Data.Entity;
 
 namespace Bookly.API
 {
@@ -22,7 +23,10 @@ namespace Bookly.API
         // GET api/books
         public IHttpActionResult GetBooks()
         {
-           var bookDtos = _context.Books.ToList().Select(Mapper.Map<Book, BookDto>);
+           var bookDtos = _context.Books
+                .Include(c => c.Genre)
+                .ToList()
+                .Select(Mapper.Map<Book, BookDto>);
 
             return Ok(bookDtos);
         }
