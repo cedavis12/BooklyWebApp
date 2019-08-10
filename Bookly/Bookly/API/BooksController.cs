@@ -20,9 +20,11 @@ namespace Bookly.API
         }
         
         // GET api/books
-        public IEnumerable<BookDto> GetBooks()
+        public IHttpActionResult GetBooks()
         {
-           return  _context.Books.ToList().Select(Mapper.Map<Book, BookDto>);
+           var bookDtos = _context.Books.ToList().Select(Mapper.Map<Book, BookDto>);
+
+            return Ok(bookDtos);
         }
 
         // GET api/books/5
@@ -72,7 +74,7 @@ namespace Bookly.API
 
         // DELETE api/books/5
         [HttpDelete]
-        public void DeleteBook(int id)
+        public IHttpActionResult DeleteBook(int id)
         {
             var bookInDb = _context.Books.SingleOrDefault(c => c.Id == id);
 
@@ -81,6 +83,8 @@ namespace Bookly.API
 
             _context.Books.Remove(bookInDb);
             _context.SaveChanges();
+
+            return Ok();
 
         }
     }
