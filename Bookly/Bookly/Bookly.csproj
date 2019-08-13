@@ -272,6 +272,10 @@
     <Compile Include="Migrations\201908121629468_AddDriversLicenseToApplicationUser.Designer.cs">
       <DependentUpon>201908121629468_AddDriversLicenseToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908130126364_AddPhoneToUserAuthentication.cs" />
+    <Compile Include="Migrations\201908130126364_AddPhoneToUserAuthentication.Designer.cs">
+      <DependentUpon>201908130126364_AddPhoneToUserAuthentication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AgeMembershipRequirement.cs" />
@@ -551,7 +555,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
-    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Customers\List.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Books\List.cshtml" />
     <Content Include="Views\Books\Details.cshtml" />
@@ -567,6 +571,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Books\ReadOnlyList.cshtml" />
+    <Content Include="Views\Customers\ReadOnlyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -631,6 +636,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908121629468_AddDriversLicenseToApplicationUser.resx">
       <DependentUpon>201908121629468_AddDriversLicenseToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908130126364_AddPhoneToUserAuthentication.resx">
+      <DependentUpon>201908130126364_AddPhoneToUserAuthentication.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
