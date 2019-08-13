@@ -44,6 +44,7 @@ namespace Bookly.API
 
         // POST api/books
         [HttpPost]
+        [Authorize(Roles = RoleName.CanManageBooks)]
         public IHttpActionResult CreateBook(BookDto bookDto)
         {
             if (!ModelState.IsValid)
@@ -61,6 +62,7 @@ namespace Bookly.API
 
         // PUT api/books/5
         [HttpPut]
+        [Authorize(Roles = RoleName.CanManageBooks)]
         public void UpdateBook(int id, BookDto bookDto)
         {
             if (!ModelState.IsValid)
@@ -78,6 +80,7 @@ namespace Bookly.API
 
         // DELETE api/books/5
         [HttpDelete]
+        [Authorize(Roles = RoleName.CanManageBooks)]
         public IHttpActionResult DeleteBook(int id)
         {
             var bookInDb = _context.Books.SingleOrDefault(c => c.Id == id);

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Books</h2>
+
+
+<table class="table table-bordered table-hover" id="books">
+    <thead>
+        <tr>
+            <th>Books</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#books").DataTable({
+                ajax: {
+                    url: "/api/books",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "genre.name"
+                    }
+                ]
+            });
+        });
+    </script>
+}

@@ -27,7 +27,7 @@
     <script>
         $(document).ready(function () {
             var table = $("#books").DataTable({
-                    ajax: {
+                ajax: {
                     url: "/api/books",
                     dataSrc: ""
                 },
@@ -50,7 +50,7 @@
                 ]
             });
 
-                  $("#books").on("click", ".delete", function () {
+            $("#books").on("click", ".delete", function () {
                 var button = $(this);
 
                 if (confirm("Are you sure you want to remove this book?")) {
@@ -63,8 +63,6 @@
                     });
                 }
             });
-
         });
     </script>
 }
-

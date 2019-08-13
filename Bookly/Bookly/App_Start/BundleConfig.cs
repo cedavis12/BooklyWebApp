@@ -11,6 +11,7 @@ namespace Bookly
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                         "~/Scripts/jquery-{version}.js",
                               "~/Scripts/bootstrap.js",
+                              "~/Scripts/bootbox.js",
                               "~/Scripts/DataTables/jquery.dataTables.js",
                               "~/Scripts/DataTables/dataTables.bootstrap4.js"
                         ));

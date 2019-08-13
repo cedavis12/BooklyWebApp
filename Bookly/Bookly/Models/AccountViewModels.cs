@@ -8,6 +8,15 @@ namespace Bookly.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+
+        [Required]
+        [Display(Name = "Driver's License")]
+        public string DriversLicense { get; set; }
+
+        [Required]
+        [StringLength(255)]
+        public string Phone { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -65,9 +74,18 @@ namespace Bookly.Models
     public class RegisterViewModel
     {
         [Required]
+        [StringLength(255)]
+        [Display(Name = "Driver's License")]
+        public string DriversLicense { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [StringLength(255)]
+        public string Phone { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

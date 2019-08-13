@@ -26,7 +26,10 @@ namespace Bookly.Controllers
         // GET: Books
         public ActionResult Index()
         {
-            return View();
+            if (User.IsInRole(RoleName.CanManageBooks))
+                return View("List");
+            else
+                return View("ReadOnlyList");
         }
 
         //GET: Books/Details/Id
@@ -41,6 +44,7 @@ namespace Bookly.Controllers
         }
 
         //GET: Books/New
+        [Authorize(Roles = RoleName.CanManageBooks)]
         public ActionResult New()
         {
             var genres = _context.Genres.ToList();
@@ -55,6 +59,7 @@ namespace Bookly.Controllers
         //POST: Books/Save
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageBooks)]
         public ActionResult Save(Book book)
         {
             if (!ModelState.IsValid)
@@ -90,6 +95,7 @@ namespace Bookly.Controllers
         }
 
         //GET: Books/Edit/Id
+        [Authorize(Roles = RoleName.CanManageBooks)]
         public ActionResult Edit(int id)
         {
             var book = _context.Books.SingleOrDefault(b => b.Id == id);
