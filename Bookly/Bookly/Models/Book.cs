@@ -29,7 +29,8 @@ namespace Bookly.Models
         [Display(Name = "Number in Stock")]
         public byte NumInStock { get; set; }
 
-        
+        public byte NumAvailable { get; set; }
+
         public Genre Genre { get; set; }
 
         [Required]

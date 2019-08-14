@@ -21,14 +21,19 @@ namespace Bookly.API
         }
         
         // GET api/books
-        public IHttpActionResult GetBooks()
+        public IEnumerable<BookDto> GetBooks(string query = null)
         {
-           var bookDtos = _context.Books
-                .Include(c => c.Genre)
-                .ToList()
-                .Select(Mapper.Map<Book, BookDto>);
+            var booksQuery = _context.Books
+                .Include(b => b.Genre)
+                .Where( b => b.NumAvailable > 0);
 
-            return Ok(bookDtos);
+            if (!string.IsNullOrWhiteSpace(query))
+                booksQuery = booksQuery.Where(b => b.Name.Contains(query)); 
+
+
+            var bookDtos = booksQuery.ToList().Select(Mapper.Map<Book, BookDto>);
+
+            return bookDtos;
         }
 
         // GET api/books/5
