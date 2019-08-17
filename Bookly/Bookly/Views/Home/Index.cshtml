@@ -14,7 +14,8 @@
             Log in with administrative rights to create and edit Customers as a Store Manager. Not a Store Manager, log in to view the list of
             Customers.
         </p>
-        <button class="btn btn-primary btn-lg">Customers</button>
+        @Html.ActionLink("Customers", "Index", "Customers", null, new { @class = "btn btn-primary btn-lg" })
+
     </div>
     <div class="col-md-4">
         <h2>Manage Books</h2>
@@ -22,11 +23,11 @@
             Log in with administrative rights to create and edit Books as a Store Manager. Not a Store Manager, log in to view the list of
             Books.
         </p>
-        <button class="btn btn-primary btn-lg">Books</button>
+        @Html.ActionLink("Books", "Index", "Books", null, new { @class = "btn btn-primary btn-lg" })
     </div>
     <div class="col-md-4">
         <h2>Create Rentals</h2>
         <p>Log in as a user with administrative or normal user rights and use the New Rental page to log Book rentals for a Customer.</p>
-        <button class="btn btn-primary btn-lg">Rentals</button>
+        @Html.ActionLink("Rentals", "New", "Rentals", null, new { @class= "btn btn-primary btn-lg"})
     </div>
 </div>
